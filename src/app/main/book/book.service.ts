@@ -10,8 +10,12 @@ export class BookService {
     private apiService: ApiService
   ) {}
 
-  getAllBooks() {
-    return this.apiService.get('/books');
+  getAllBooks(authorsId) {
+    return this.apiService.get('/authors/' + authorsId + '/books');
+  }
+
+  getAuthor(authorsId) {
+    return this.apiService.get('/authors/' + authorsId);
   }
 
 }

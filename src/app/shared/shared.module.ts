@@ -18,7 +18,9 @@ import {
   AuthService,
   UserService,
   UserRouteAccessService,
-  NotificationService
+  NotificationService,
+  SpinnerService,
+  SpinnerComponent
 } from './';
 
 @NgModule({
@@ -30,7 +32,8 @@ import {
     HttpClientModule
   ],
   declarations: [
-    VersionComponent
+    VersionComponent,
+    SpinnerComponent
   ],
   exports: [
     NgbModule,
@@ -41,14 +44,16 @@ import {
     MatInputModule,
     MatSortModule,
     MatPaginatorModule,
-    VersionComponent
+    VersionComponent,
+    SpinnerComponent
   ],
   providers: [
     ApiService,
     AuthService,
     UserService,
     UserRouteAccessService,
-    NotificationService
+    NotificationService,
+    SpinnerService
   ]
 })
 export class SharedModule { }

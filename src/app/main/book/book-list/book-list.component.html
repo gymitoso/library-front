@@ -1,3 +1,44 @@
-<p>
-  book-list works!
-</p>
+<div class="mt-2"></div>
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+<div class="table-container">
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell class="title-table-id" *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="id-title">
+        <div class="id-container">
+          <div class="id-container-text">{{element.id}}</div>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Book Title Column -->
+    <ng-container matColumnDef="title">
+      <mat-header-cell class="title-table-name" *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="name-title">
+        <div class="name-container">
+          <div class="name-container-text">{{element.title}}</div>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row class="list-item"  *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator #paginator [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]" >
+  </mat-paginator>
+
+  <div class="row text-center mt-4" *ngIf="dataSource.data.length == 0">
+    <div class="col-sm-12">
+      <a>
+        Empty list
+      </a>
+    </div>
+  </div>
+</div>

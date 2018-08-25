@@ -20,3 +20,7 @@ app-author-list {
   flex: auto;
   overflow: hidden;
 }
+
+.title {
+  cursor: pointer;
+}
