@@ -2,7 +2,12 @@ import { NgModule, Injector } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MatTableModule } from '@angular/material';
+import {
+  MatTableModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSortModule
+} from '@angular/material';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ToastyModule } from 'ng2-toasty';
 import { Ng2Webstorage } from 'ngx-webstorage';
@@ -32,6 +37,9 @@ import {
     ToastyModule,
     HttpClientModule,
     MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSortModule,
     MatPaginatorModule,
     VersionComponent
   ],

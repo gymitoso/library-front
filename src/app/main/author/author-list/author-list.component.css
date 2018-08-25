@@ -3,6 +3,19 @@
   border-bottom: 2px solid #E8E5E5;
 }
 
+.mat-form-field {
+  font-size: 14px;
+  width: 25%;
+}
+
+.mat-form-field-label {
+  color:  #37af6b !important;
+}
+
+/deep/ .mat-focused .mat-form-field-label {
+  color:  #37af6b !important;
+}
+
 .table-container {
   flex: 1;
   display: flex;
@@ -108,4 +121,13 @@
 
 /deep/ .mat-paginator-container {
   background-color: #F6F7FB;
+}
+
+.book-icons {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.book-icons:hover {
+  font-size: 22px;
 }

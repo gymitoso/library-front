@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedModule } from '../shared/shared.module';
 import { AuthorModule } from './author/author.module';
+import { BookModule } from './book/book.module';
 import { NavbarComponent } from './layouts';
 import { MainComponent } from './main';
 import { mainRoute } from './main.route';
@@ -19,6 +20,7 @@ const ROUTES = [
     CommonModule,
     SharedModule,
     AuthorModule,
+    BookModule,
     FormsModule,
     BrowserAnimationsModule,
     RouterModule.forChild(ROUTES)

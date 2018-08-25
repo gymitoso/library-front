@@ -1,10 +1,13 @@
-<div class="div-line"></div>
+<div class="mt-5"></div>
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
 <div class="table-container">
-  <mat-table #table [dataSource]="dataSource">
+  <mat-table #table [dataSource]="dataSource" matSort>
 
     <!-- Id Column -->
     <ng-container matColumnDef="id">
-      <mat-header-cell class="title-table-id" *matHeaderCellDef>ID</mat-header-cell>
+      <mat-header-cell class="title-table-id" *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
       <mat-cell *matCellDef="let element" class="id-title">
         <div class="id-container">
           <div class="id-container-text">{{element.id}}</div>
@@ -14,7 +17,7 @@
 
     <!-- FirstName Column -->
     <ng-container matColumnDef="firstName">
-      <mat-header-cell class="title-table-name" *matHeaderCellDef>First Name</mat-header-cell>
+      <mat-header-cell class="title-table-name" *matHeaderCellDef mat-sort-header>First Name</mat-header-cell>
       <mat-cell *matCellDef="let element" class="name-title">
         <div class="name-container">
           <div class="name-container-text">{{element.firstName}}</div>
@@ -24,11 +27,19 @@
 
     <!-- LastName Column -->
     <ng-container matColumnDef="lastName">
-      <mat-header-cell class="title-table-name" *matHeaderCellDef>Last Name</mat-header-cell>
+      <mat-header-cell class="title-table-name" *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
       <mat-cell *matCellDef="let element" class="name-title">
         <div class="name-container">
           <div class="name-container-text">{{element.lastName}}</div>
         </div>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Authors Books Column -->
+    <ng-container matColumnDef="book">
+      <mat-header-cell class="title-table-id" *matHeaderCellDef mat-sort-header>Books</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="id-title">
+        <i [routerLink]="['books', element.id]" class="fa fa-book book-icons" aria-hidden="true"></i>
       </mat-cell>
     </ng-container>
 
