@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 
-import { SpinnerService } from '../../../shared';
 import { BookService } from '../book.service';
 
 @Component({
@@ -20,10 +19,11 @@ export class BookListComponent implements OnInit {
 
   private authorId;
 
+  loading = false;
+
   constructor(
     private bookService: BookService,
-    private routerParam: ActivatedRoute,
-    public spinnerService: SpinnerService
+    private routerParam: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -34,14 +34,14 @@ export class BookListComponent implements OnInit {
   }
 
   loadBooks() {
-    this.spinnerService.showSpinner(true);
+    this.loading = true;
     this.bookService.getAllBooks(this.authorId).subscribe(
       data => {
         this.dataSource.data = data;
-        this.spinnerService.hideSpinner();
+        this.loading = false;
       },
       err => {
-        this.spinnerService.hideSpinner();
+        this.loading = false;
       }
     );
   }

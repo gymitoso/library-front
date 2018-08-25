@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 
 import { AuthorService } from '../author.service';
-import { SpinnerService } from '../../../shared';
 
 @Component({
   selector: 'app-author-list',
@@ -17,9 +16,10 @@ export class AuthorListComponent implements OnInit {
   displayedColumns = ['id', 'firstName', 'lastName', 'book'];
   dataSource = new MatTableDataSource<any>();
 
+  loading = false;
+
   constructor(
-    private authorService: AuthorService,
-    public spinnerService: SpinnerService
+    private authorService: AuthorService
   ) { }
 
   ngOnInit() {
@@ -29,14 +29,14 @@ export class AuthorListComponent implements OnInit {
   }
 
   loadAuthors() {
-    this.spinnerService.showSpinner(true);
+    this.loading = true;
     this.authorService.getAllAuthors().subscribe(
       data => {
         this.dataSource.data = data;
-        this.spinnerService.hideSpinner();
+        this.loading = false;
       },
       err => {
-        this.spinnerService.hideSpinner();
+        this.loading = false;
       }
     );
   }

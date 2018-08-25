@@ -19,7 +19,6 @@ import {
   UserService,
   UserRouteAccessService,
   NotificationService,
-  SpinnerService,
   SpinnerComponent
 } from './';
 
@@ -52,8 +51,7 @@ import {
     AuthService,
     UserService,
     UserRouteAccessService,
-    NotificationService,
-    SpinnerService
+    NotificationService
   ]
 })
 export class SharedModule { }

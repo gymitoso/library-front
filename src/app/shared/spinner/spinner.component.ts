@@ -10,7 +10,6 @@ import {Component, Input, OnDestroy, Inject, ViewEncapsulation} from '@angular/c
 })
 export class SpinnerComponent implements OnDestroy {
     @Input() isSpinnerVisible = false;
-    @Input() isLoadingVisible = true;
 
     constructor() {
     }
