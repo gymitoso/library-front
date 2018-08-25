@@ -1,0 +1,27 @@
+<div class="main-content">
+    <div class="login-content">
+        <h1>Login</h1>
+        <form #loginForm="ngForm">
+            <div class="fields">
+                <input type="text" class="user" name="username" required placeholder="Usuário"
+                  [ngClass]="{'weak': (username.invalid && (username.dirty || username.touched))}"
+                  #username="ngModel" [(ngModel)]="credentials.username">
+                <div *ngIf="username.invalid && (username.dirty || username.touched)">
+                    <div *ngIf="username.errors.required"><small class="weak-m">Campo obrigatório.</small></div>
+                </div>
+                <input type="password" class="pass" name="password" required minlength="4" placeholder="Senha"
+                  [ngClass]="{'weak': (password.invalid && (password.dirty || password.touched))}"
+                  #password="ngModel" [(ngModel)]="credentials.password" (keyup.enter)="(loginForm.valid) ? login() : false">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                    <div *ngIf="password.errors.minlength"><small class="weak-m">A senha deve ter ao menos 4 caracteres.</small></div>
+                    <div *ngIf="password.errors.required"><small class="weak-m">Campo obrigatório.</small></div>
+                </div>
+            </div>
+        </form>
+        <div class="forget-pass"><a href="#">Esqueceu sua senha?</a></div>
+        <button class="bttn" [disabled]="!loginForm.valid" (click)="login()">Entrar</button>
+        <div class="line"></div>
+        <app-version></app-version>
+    </div>
+</div>
+<ng2-toasty></ng2-toasty>

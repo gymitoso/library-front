@@ -1,0 +1,43 @@
+<div class="div-line"></div>
+<div class="table-container">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell class="title-table-id" *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="id-title">
+        <div class="id-container">
+          <div class="id-container-text">{{element.id}}</div>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <!-- FirstName Column -->
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell class="title-table-name" *matHeaderCellDef>First Name</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="name-title">
+        <div class="name-container">
+          <div class="name-container-text">{{element.firstName}}</div>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <!-- LastName Column -->
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell class="title-table-name" *matHeaderCellDef>Last Name</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="name-title">
+        <div class="name-container">
+          <div class="name-container-text">{{element.lastName}}</div>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row class="list-item"  *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator #paginator [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]" >
+  </mat-paginator>
+</div>
