@@ -38,15 +38,15 @@ export class LoginComponent implements OnInit {
         }
         this.notification.notify(
           this.toastyService,
-          'Falha na Autenticação',
-          'Credenciais inválidas',
+          'Authentication failed',
+          'Invalid credentials',
           'error'
         );
       },
       err => {
         this.notification.notify(this.toastyService,
-          'Erro no servidor',
-          'Tente novamente em alguns instantes',
+          'Server error',
+          'Try again in a few moments',
           'error'
         );
       }

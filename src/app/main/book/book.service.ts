@@ -18,4 +18,11 @@ export class BookService {
     return this.apiService.get('/authors/' + authorsId);
   }
 
+  uploadBooksFile(file) {
+    const formdata: FormData = new FormData();
+    formdata.append('booksFile', file);
+
+    return this.apiService.postFormData('/upload-books-file', formdata, null, true);
+  }
+
 }

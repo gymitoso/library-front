@@ -11,7 +11,7 @@ export class NotificationService {
   theme = 'default';
   closeOther = true;
 
-  notify(t: ToastyService, title: string, msg: string, type, timeout = 3000) {
+  notify(t: ToastyService, title: string, msg: string, type, timeout = 4000) {
     if (this.closeOther) {
       t.clearAll();
     }

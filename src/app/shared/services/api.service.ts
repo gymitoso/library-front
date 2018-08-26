@@ -23,7 +23,7 @@ export class ApiService {
   private setHeaders(header: Map<string, string>): HttpHeaders {
 
     const headersConfig = {
-      'Content-Type': 'application/json',
+      'Content-type': 'application/json',
       'Accept': 'application/json'
     };
 
@@ -45,25 +45,27 @@ export class ApiService {
     return Observable.throw(error);
   }
 
-  get(path: string, header?: Map<string, string> ): Observable<any> {
-    return this.http.get(`${environment.api_url}${path}`, {headers: this.setHeaders(header)})
+  get(path: string, header?: Map<string, string>, middleware = false): Observable<any> {
+    let url;
+    if (middleware) {
+      url = `${environment.middleware_url}${path}`;
+    } else {
+      url = `${environment.api_url}${path}`;
+    }
+    return this.http.get(url, {headers: this.setHeaders(header)})
     .catch(this.formatErrors)
     .map((res: HttpResponse<Response>) => res);
   }
 
-  put(path: string, body: Object = {}, header?: Map<string, string>): Observable<any> {
-    return this.http.put(
-      `${environment.api_url}${path}`,
-      JSON.stringify(body),
-      {headers: this.setHeaders(header)}
-    )
-    .catch(this.formatErrors)
-    .map((res: HttpResponse<Response>) => res);
-  }
-
-  post(path: string, body: Object = {}, header?: Map<string, string>): Observable<any> {
+  post(path: string, body: Object = {}, header?: Map<string, string>, middleware = false): Observable<any> {
+    let url;
+    if (middleware) {
+      url = `${environment.middleware_url}${path}`;
+    } else {
+      url = `${environment.api_url}${path}`;
+    }
     return this.http.post(
-      `${environment.api_url}${path}`,
+      url,
       JSON.stringify(body),
       {headers: this.setHeaders(header)}
     )
@@ -71,11 +73,25 @@ export class ApiService {
     .map((res: HttpResponse<Response>) => res);
   }
 
-  delete(path, header?: Map<string, string>): Observable<any> {
-    return this.http.delete(
-      `${environment.api_url}${path}`,
-      {headers: this.setHeaders(header)}
-    )
+  postFormData(path: string, body: Object = {}, header?: Map<string, string>, middleware = false): Observable<any> {
+    let url;
+    if (middleware) {
+      url = `${environment.middleware_url}${path}`;
+    } else {
+      url = `${environment.api_url}${path}`;
+    }
+
+    const headerToken = {
+      'Authorization': 'Bearer ' + this.sessionStorage.retrieve('authenticationToken'),
+    };
+
+    const req = new HttpRequest('POST', url, body, {
+      reportProgress: true,
+      responseType: 'text',
+      headers: new HttpHeaders(headerToken)
+    });
+
+    return this.http.request(req)
     .catch(this.formatErrors)
     .map((res: HttpResponse<Response>) => res);
   }

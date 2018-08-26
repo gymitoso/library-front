@@ -30,7 +30,7 @@ export class AuthService {
         username: credentials.username,
         password: credentials.password
     };
-    return this.apiService.post('/authenticate', data).map(authenticateSuccess.bind(this));
+    return this.apiService.post('/authenticate', data, null, true).map(authenticateSuccess.bind(this));
 
     function authenticateSuccess(resp) {
       if (resp && resp.token && resp.user) {

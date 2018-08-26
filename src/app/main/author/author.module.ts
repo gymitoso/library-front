@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
 import { SharedModule } from '../../shared/shared.module';
 import { AuthorComponent, AuthorListComponent, AuthorService } from './';
 
@@ -11,7 +10,7 @@ import { AuthorComponent, AuthorListComponent, AuthorService } from './';
     SharedModule,
     RouterModule
   ],
-  declarations: [AuthorComponent, AuthorListComponent],
+  declarations: [ AuthorComponent, AuthorListComponent ],
   providers: [ AuthorService ]
 })
 export class AuthorModule { }

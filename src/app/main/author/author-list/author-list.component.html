@@ -1,7 +1,17 @@
-<div class="mt-2"></div>
-<mat-form-field>
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-</mat-form-field>
+<div class="d-inline-flex mt-2 row">
+  <div class="col-6">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <div class="custom-file">
+      <input type="file" name="authorsFile" #authorsFile (change)="fileChange($event)"
+        class="custom-file-input" id="customFile">
+      <label class="custom-file-label" for="customFile">Choose file to add authors</label>
+    </div>
+  </div>
+</div>
 <div class="table-container">
   <mat-table #table [dataSource]="dataSource" matSort>
 
@@ -60,4 +70,5 @@
     </div>
   </div>
 </div>
+<ng2-toasty></ng2-toasty>
 <app-spinner [isSpinnerVisible]="loading"></app-spinner>

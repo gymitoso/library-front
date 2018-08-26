@@ -14,4 +14,11 @@ export class AuthorService {
     return this.apiService.get('/authors');
   }
 
+  uploadAuthorsFile(file) {
+    const formdata: FormData = new FormData();
+    formdata.append('authorsFile', file);
+
+    return this.apiService.postFormData('/upload-authors-file', formdata, null, true);
+  }
+
 }

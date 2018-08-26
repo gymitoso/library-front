@@ -8,7 +8,7 @@ export const mainRoute: Route = {
     path: '',
     component: MainComponent,
     data: {
-        authorities: []
+        authorities: ['ROLE_USER', 'ROLE_ADMIN']
     },
     canActivate: [UserRouteAccessService],
     children: [authorRoute, bookRoute]

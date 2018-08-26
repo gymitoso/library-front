@@ -22,5 +22,6 @@ app-author-list {
 }
 
 .title {
+  width: 30%;
   cursor: pointer;
 }

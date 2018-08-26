@@ -11,8 +11,5 @@ export class GlobalErrorHandler implements ErrorHandler {
 
   handleError(error) {
     console.log(error);
-    // when catch a error return to home page
-    this.router = this.injector.get(Router);
-    this.router.navigate(['/']);
   }
 }

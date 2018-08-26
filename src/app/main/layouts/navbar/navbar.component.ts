@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
-      // this.user = this.userService.getUser();
+      this.user = this.userService.getUser();
     }
 
     collapseNavbar() {

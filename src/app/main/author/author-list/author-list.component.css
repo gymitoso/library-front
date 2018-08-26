@@ -1,11 +1,11 @@
-.div-line {
-  width: 100%;
-  border-bottom: 2px solid #E8E5E5;
+.custom-file {
+  width: 70%;
+  float: right;
 }
 
 .mat-form-field {
   font-size: 14px;
-  width: 25%;
+  width: 60%;
 }
 
 .mat-form-field-label {
