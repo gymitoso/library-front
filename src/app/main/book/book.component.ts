@@ -10,7 +10,7 @@ import { BookListComponent } from './book-list/book-list.component';
 })
 export class BookComponent implements OnInit {
 
-  @ViewChild(BookListComponent) list: BookListComponent
+  @ViewChild(BookListComponent) list: BookListComponent;
 
   private authorId;
 

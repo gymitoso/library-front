@@ -66,9 +66,9 @@ export class BookListComponent implements OnInit {
   }
 
   fileChange(event) {
-    let reader = new FileReader();
-    if(event.target.files && event.target.files.length > 0) {
-      let file = event.target.files[0];
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0];
       reader.readAsDataURL(file);
       reader.onload = () => {
         if (file.type === 'text/plain' || file.type === 'application/json') {
@@ -98,7 +98,7 @@ export class BookListComponent implements OnInit {
         }
       };
     }
-    this.booksFile.nativeElement.value = "";
+    this.booksFile.nativeElement.value = '';
   }
 
 
